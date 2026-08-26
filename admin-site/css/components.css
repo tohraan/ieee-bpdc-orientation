@@ -123,6 +123,91 @@ input.has-error:focus {
 /* BITS ID reads as a technical value — mono per the design system */
 #bits-id { font-family: var(--font-mono); letter-spacing: 0.04em; }
 
+/* ── 6b. Email input group ──────────────────────────────── */
+.email-input-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.18s ease;
+}
+.email-input-group:focus-within {
+  border-color: var(--color-cyan-400);
+}
+.email-input-group input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  background: var(--color-surface-input);
+}
+.email-input-group input[type="text"]:focus {
+  border: none;
+  background: var(--color-surface-input-focus);
+}
+.email-domain-suffix {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-3);
+  background: var(--color-navy-800);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--type-body-sm);
+  white-space: nowrap;
+  user-select: all;
+  border-left: 1px solid var(--color-border);
+  letter-spacing: 0.01em;
+}
+
+/* ── 6c. Phone input group ──────────────────────────────── */
+.phone-input-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.18s ease;
+}
+.phone-input-group:focus-within {
+  border-color: var(--color-cyan-400);
+}
+.country-code-select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-right: 1px solid var(--color-border);
+  border-radius: 0;
+  background: var(--color-navy-800);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--type-body-sm);
+  font-weight: 500;
+  padding: 0 var(--space-5) 0 var(--space-3);
+  min-height: 48px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2394A3B8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  flex-shrink: 0;
+  transition: background-color 0.18s ease;
+}
+.country-code-select:focus {
+  outline: none;
+  background-color: var(--color-surface-input-focus);
+}
+.phone-input-group input[type="tel"] {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  background: var(--color-surface-input);
+}
+.phone-input-group input[type="tel"]:focus {
+  border: none;
+  background: var(--color-surface-input-focus);
+}
+
 /* ── 7. Card base ───────────────────────────────────────── */
 .card {
   background: var(--color-surface-card);
@@ -785,7 +870,8 @@ input.has-error:focus {
   text-align: center;
 }
 .bottom-strip .ieee-lockup { display: flex; align-items: center; gap: var(--space-2); }
-.bottom-strip .ieee-lockup svg { width: 26px; height: 26px; color: var(--color-white); }
+.bottom-strip .ieee-lockup svg,
+.bottom-strip .ieee-lockup .ieee-lockup-icon { width: 26px; height: 26px; object-fit: contain; }
 .bottom-strip .ieee-wordmark {
   font-family: var(--font-body);
   font-weight: 700;
@@ -846,7 +932,7 @@ input.has-error:focus {
 .register-main { padding-bottom: var(--space-16); }
 .register-header { text-align: center; padding: var(--space-12) var(--space-6) var(--space-8); }
 .register-header > * { margin-inline: auto; }
-.register-header .ieee-mark { width: 32px; height: auto; color: var(--color-cyan-400); margin-bottom: var(--space-4); }
+.register-header .ieee-mark { width: 32px; height: 32px; object-fit: contain; margin-bottom: var(--space-4); }
 .register-header h1 {
   font-size: var(--type-display-lg);
   color: var(--color-text-primary);
