@@ -25,10 +25,7 @@
   <!-- ============ Desktop top nav ============ -->
   <header class="nav-top" aria-label="Site navigation">
     <a href="brochure.html" class="nav-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 1.5 22.5 12 12 22.5 1.5 12z"/><circle cx="12" cy="12" r="4.6"/>
-        <path d="M7.4 12h9.2M12 7.4c1.5 1.3 2.3 2.9 2.3 4.6S13.5 15.3 12 16.6c-1.5-1.3-2.3-2.9-2.3-4.6S10.5 8.7 12 7.4z"/>
-      </svg>
+      <img src="assets/brand/ieee-icon.png" alt="IEEE" class="nav-logo-img" width="512" height="512">
       <span>IEEE BPDC</span>
     </a>
     <nav class="nav-links">
@@ -41,10 +38,7 @@
 
     <!-- ============ Header ============ -->
     <div class="register-header">
-      <svg class="ieee-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="IEEE logo">
-        <path d="M12 1.5 22.5 12 12 22.5 1.5 12z"/><circle cx="12" cy="12" r="4.6"/>
-        <path d="M7.4 12h9.2M12 7.4c1.5 1.3 2.3 2.9 2.3 4.6S13.5 15.3 12 16.6c-1.5-1.3-2.3-2.9-2.3-4.6S10.5 8.7 12 7.4z"/>
-      </svg>
+      <img class="ieee-mark" src="assets/brand/ieee-icon.png" alt="IEEE logo" width="512" height="512">
       <h1>Join IEEE BPDC</h1>
       <p class="register-meta">Orientation 2025&ndash;26</p>
       <p class="register-sub">Fill in your details below and we'll reach out to complete your IEEE membership.</p>
@@ -68,23 +62,93 @@
         </div>
 
         <div class="form-group">
-          <label for="email" class="form-label">Email ID <span class="required-star">*</span></label>
-          <input type="email" id="email" name="email" placeholder="you@dubai.bits-pilani.ac.in" autocomplete="email" required>
-          <p class="form-warning" id="email-warning" hidden></p>
-          <p class="form-error" id="email-error" role="alert" hidden></p>
+          <label for="email-local" class="form-label">Email ID <span class="required-star">*</span></label>
+          <div class="email-input-group">
+            <input type="text" id="email-local" name="email_local" placeholder="f20230001" autocomplete="username" spellcheck="false" required>
+            <span class="email-domain-suffix">@dubai.bits-pilani.ac.in</span>
+          </div>
+          <p class="form-error" id="email-local-error" role="alert" hidden></p>
         </div>
 
         <div class="form-group">
-          <label for="phone-call" class="form-label">Phone (for calls) <span class="required-star">*</span></label>
-          <input type="tel" id="phone-call" name="phone_call" placeholder="+971 XX XXX XXXX" autocomplete="tel" required>
-          <p class="form-error" id="phone-call-error" role="alert" hidden></p>
+          <label for="phone-call-number" class="form-label">Phone (for calls) <span class="required-star">*</span></label>
+          <div class="phone-input-group">
+            <select id="phone-call-code" name="phone_call_code" class="country-code-select" autocomplete="tel-country-code">
+              <option value="+971" selected>🇦🇪 +971</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+92">🇵🇰 +92</option>
+              <option value="+966">🇸🇦 +966</option>
+              <option value="+968">🇴🇲 +968</option>
+              <option value="+973">🇧🇭 +973</option>
+              <option value="+974">🇶🇦 +974</option>
+              <option value="+965">🇰🇼 +965</option>
+              <option value="+962">🇯🇴 +962</option>
+              <option value="+20">🇪🇬 +20</option>
+              <option value="+94">🇱🇰 +94</option>
+              <option value="+880">🇧🇩 +880</option>
+              <option value="+977">🇳🇵 +977</option>
+              <option value="+63">🇵🇭 +63</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+234">🇳🇬 +234</option>
+              <option value="+254">🇰🇪 +254</option>
+              <option value="+27">🇿🇦 +27</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+82">🇰🇷 +82</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+7">🇷🇺 +7</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+34">🇪🇸 +34</option>
+            </select>
+            <input type="tel" id="phone-call-number" name="phone_call_number" placeholder="XX XXX XXXX" autocomplete="tel-national" required>
+          </div>
+          <p class="form-error" id="phone-call-number-error" role="alert" hidden></p>
         </div>
 
         <div class="form-group">
-          <label for="phone-whatsapp" class="form-label">WhatsApp Number</label>
-          <input type="tel" id="phone-whatsapp" name="phone_whatsapp" placeholder="+971 XX XXX XXXX" autocomplete="tel">
+          <label for="phone-whatsapp-number" class="form-label">WhatsApp Number</label>
+          <div class="phone-input-group">
+            <select id="phone-whatsapp-code" name="phone_whatsapp_code" class="country-code-select" autocomplete="tel-country-code">
+              <option value="+971" selected>🇦🇪 +971</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+92">🇵🇰 +92</option>
+              <option value="+966">🇸🇦 +966</option>
+              <option value="+968">🇴🇲 +968</option>
+              <option value="+973">🇧🇭 +973</option>
+              <option value="+974">🇶🇦 +974</option>
+              <option value="+965">🇰🇼 +965</option>
+              <option value="+962">🇯🇴 +962</option>
+              <option value="+20">🇪🇬 +20</option>
+              <option value="+94">🇱🇰 +94</option>
+              <option value="+880">🇧🇩 +880</option>
+              <option value="+977">🇳🇵 +977</option>
+              <option value="+63">🇵🇭 +63</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+234">🇳🇬 +234</option>
+              <option value="+254">🇰🇪 +254</option>
+              <option value="+27">🇿🇦 +27</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+82">🇰🇷 +82</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+7">🇷🇺 +7</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+34">🇪🇸 +34</option>
+            </select>
+            <input type="tel" id="phone-whatsapp-number" name="phone_whatsapp_number" placeholder="XX XXX XXXX" autocomplete="tel-national">
+          </div>
           <p class="form-hint">Leave blank if same as calling number</p>
-          <p class="form-error" id="phone-whatsapp-error" role="alert" hidden></p>
+          <p class="form-error" id="phone-whatsapp-number-error" role="alert" hidden></p>
         </div>
 
         <p class="error-banner" id="form-error-banner" role="alert" hidden></p>

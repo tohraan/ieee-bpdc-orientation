@@ -12,25 +12,32 @@
   const errorBanner  = document.getElementById('form-error-banner');
   const successState = document.getElementById('success-state');
   const successName  = document.getElementById('success-name');
-  const emailWarning = document.getElementById('email-warning');
 
   const submitBtnDefaultHtml = submitBtn.innerHTML;
 
   // Field id → { input, error } — the error paragraph is `${id}-error`.
-  const FIELDS = ['full-name', 'bits-id', 'email', 'phone-call', 'phone-whatsapp'];
+  const FIELDS = ['full-name', 'bits-id', 'email-local', 'phone-call-number', 'phone-whatsapp-number'];
 
   const BITS_ID_RE = /^[0-9]{4}[A-Z][0-9][A-Z]{2}[0-9]{4}[A-Z]$/i;
-  const EMAIL_RE   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const EMAIL_LOCAL_RE = /^[a-zA-Z0-9._-]+$/;
   const BITS_DOMAIN = 'dubai.bits-pilani.ac.in';
 
   // ── Data ──────────────────────────────────────────────────
   function collectFormData() {
+    const emailLocal = document.getElementById('email-local').value.trim();
+
+    const callCode   = document.getElementById('phone-call-code').value;
+    const callNumber = document.getElementById('phone-call-number').value.trim();
+
+    const waCode     = document.getElementById('phone-whatsapp-code').value;
+    const waNumber   = document.getElementById('phone-whatsapp-number').value.trim();
+
     const data = {
       full_name:      document.getElementById('full-name').value.trim(),
       bits_id:        document.getElementById('bits-id').value.trim(),
-      email:          document.getElementById('email').value.trim(),
-      phone_call:     document.getElementById('phone-call').value.trim(),
-      phone_whatsapp: document.getElementById('phone-whatsapp').value.trim(),
+      email:          emailLocal ? `${emailLocal}@${BITS_DOMAIN}` : '',
+      phone_call:     callNumber ? `${callCode} ${callNumber}` : '',
+      phone_whatsapp: waNumber   ? `${waCode} ${waNumber}` : '',
     };
     // WhatsApp defaults to the calling number when left blank.
     if (!data.phone_whatsapp) data.phone_whatsapp = data.phone_call;
@@ -60,34 +67,27 @@
       errors.push({ field: 'bits-id', message: 'That does not look like a BITS ID. Expected format: 2023A7PS0001U' });
     }
 
-    if (!data.email) {
-      errors.push({ field: 'email', message: 'Please enter your email address.' });
-    } else if (!EMAIL_RE.test(data.email)) {
-      errors.push({ field: 'email', message: 'Please enter a valid email address.' });
+    const emailLocal = document.getElementById('email-local').value.trim();
+    if (!emailLocal) {
+      errors.push({ field: 'email-local', message: 'Please enter your email ID.' });
+    } else if (!EMAIL_LOCAL_RE.test(emailLocal)) {
+      errors.push({ field: 'email-local', message: 'Email ID can only contain letters, numbers, dots, hyphens, and underscores.' });
     }
 
-    if (!data.phone_call) {
-      errors.push({ field: 'phone-call', message: 'Please enter a phone number we can call.' });
-    } else if (digitCount(data.phone_call) < 7) {
-      errors.push({ field: 'phone-call', message: 'Please enter a valid phone number.' });
+    const callNumber = document.getElementById('phone-call-number').value.trim();
+    if (!callNumber) {
+      errors.push({ field: 'phone-call-number', message: 'Please enter a phone number we can call.' });
+    } else if (digitCount(callNumber) < 7) {
+      errors.push({ field: 'phone-call-number', message: 'Please enter a valid phone number.' });
     }
 
     // WhatsApp is optional, but must be valid when the user typed one.
-    const rawWhatsapp = document.getElementById('phone-whatsapp').value.trim();
-    if (rawWhatsapp && digitCount(rawWhatsapp) < 7) {
-      errors.push({ field: 'phone-whatsapp', message: 'Please enter a valid WhatsApp number, or leave it blank.' });
+    const waNumber = document.getElementById('phone-whatsapp-number').value.trim();
+    if (waNumber && digitCount(waNumber) < 7) {
+      errors.push({ field: 'phone-whatsapp-number', message: 'Please enter a valid WhatsApp number, or leave it blank.' });
     }
 
     return errors;
-  }
-
-  // A non-BITS address is allowed — just flagged.
-  function renderEmailWarning(email) {
-    const nonBits = email && EMAIL_RE.test(email) && !email.toLowerCase().endsWith(`@${BITS_DOMAIN}`);
-    emailWarning.textContent = nonBits
-      ? 'Heads up: this is not a BITS Pilani Dubai address. We will still reach out here.'
-      : '';
-    emailWarning.hidden = !nonBits;
   }
 
   // ── Error rendering ───────────────────────────────────────
@@ -144,7 +144,6 @@
     clearErrors();
 
     const data = collectFormData();
-    renderEmailWarning(data.email);
 
     const errors = validateForm(data);
     if (errors.length) { renderErrors(errors); return; }
