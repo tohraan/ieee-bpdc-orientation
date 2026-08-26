@@ -8,8 +8,6 @@ DESIGN_SYSTEM.md
 FRONTEND.md
 SITEMAP.md
 
-# The admin dashboard is deployed separately, as its own private site
-admin-site/
 
 # Local secrets / working files
 .supabase-db-password.txt
