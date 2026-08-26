@@ -1,0 +1,1061 @@
+/* ============================================================
+   components.css — IEEE BPDC Site
+   Buttons, forms, cards, brochure panels, admin UI.
+   All colors reference tokens from tokens.css.
+   ============================================================ */
+
+/* ── 1. Primary button ──────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--color-cyan-400);
+  color: var(--color-text-inverse);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--type-label-lg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  border: none;
+  min-height: 48px;
+  transition: background 0.18s ease;
+}
+.btn-primary:hover { background: var(--color-cyan-300); }
+.btn-primary:active { background: var(--color-cyan-600); }
+.btn-primary:disabled,
+.btn-primary[disabled] { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+/* ── 2. Secondary button ────────────────────────────────── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--color-cyan-400);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--type-label-lg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-cyan-border);
+  min-height: 48px;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.btn-secondary:hover { background: var(--color-cyan-muted); border-color: var(--color-cyan-400); color: var(--color-cyan-300); }
+.btn-secondary:active { color: var(--color-cyan-600); }
+.btn-secondary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── 3. Button modifiers ────────────────────────────────── */
+.btn-full { width: 100%; justify-content: center; }
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--type-body-sm);
+  min-height: 36px;
+}
+
+/* ── 4. Spinner ─────────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(6,14,30,0.30);
+  border-top-color: var(--color-text-inverse);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── 5. Form groups ─────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+.form-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--type-body-sm);
+  color: var(--color-text-secondary);
+}
+.required-star { color: var(--color-cyan-400); }
+.form-hint {
+  font-size: var(--type-body-sm);
+  color: var(--color-text-muted);
+}
+.form-error {
+  font-size: var(--type-body-sm);
+  color: var(--color-error);
+}
+.form-warning {
+  font-size: var(--type-body-sm);
+  color: var(--color-warning);
+}
+
+/* ── 6. Inputs ──────────────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+  width: 100%;
+  background: var(--color-surface-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--type-body-lg);
+  padding: var(--space-3) var(--space-4);
+  min-height: 48px;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+input::placeholder, textarea::placeholder { color: var(--color-text-muted); }
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-cyan-400);
+  background: var(--color-surface-input-focus);
+}
+input.has-error,
+input.has-error:focus {
+  border-color: var(--color-error);
+}
+/* BITS ID reads as a technical value — mono per the design system */
+#bits-id { font-family: var(--font-mono); letter-spacing: 0.04em; }
+
+/* ── 7. Card base ───────────────────────────────────────── */
+.card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.card-interactive { transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+.card-interactive:hover { box-shadow: var(--shadow-card-hover); }
+
+/* ── 8. Stat tiles ──────────────────────────────────────── */
+.stats-row { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+@media (min-width: 640px) { .stats-row { grid-template-columns: repeat(3, 1fr); } }
+
+.stat-tile {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-cyan-400);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: var(--type-display-md);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--type-body-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.stat-description {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--type-body-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ── 9. Data table ──────────────────────────────────────── */
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--type-body-sm);
+  white-space: nowrap;
+}
+.data-table th {
+  background: var(--color-navy-800);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--type-body-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  /* .table-container is an overflow-x:auto scroll container, so sticky here
+     resolves against that container, not the page. Offsetting by the 56px
+     nav height would push the header down inside the table and hide row 1. */
+  top: 0;
+  z-index: 1;
+}
+.data-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--type-mono-sm);
+}
+.data-table td:nth-child(2) {
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+.data-table tbody tr:hover { background: var(--color-surface-card-hover); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.row-number { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.table-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  padding: var(--space-12) var(--space-6);
+  white-space: normal;
+}
+
+/* ── 10. Brochure panel base ────────────────────────────── */
+.brochure-hero {
+  background: var(--color-navy-800);
+  border-bottom: 1px solid var(--color-border);
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  flex-wrap: wrap;
+}
+.brochure-hero-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.brochure-hero-name {
+  font-weight: 600;
+  font-size: var(--type-body-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.brochure-hero-sep { color: var(--color-text-muted); }
+.brochure-hero-meta {
+  font-weight: 400;
+  font-size: var(--type-body-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+@media (min-width: 768px) { .brochure-hero { min-height: 64px; padding-inline: var(--space-8); } }
+
+/* ---------- Institutional co-brand lockup ---------- */
+.cobrand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+.cobrand-ieee { width: auto; height: 28px; }
+.cobrand-bits { width: auto; height: 34px; }
+.cobrand-rule {
+  width: 1px;
+  height: 26px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+.cobrand-x {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--type-body-md);
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  .cobrand-ieee { height: 32px; }
+  .cobrand-bits { height: 40px; }
+  .cobrand-rule { height: 32px; }
+}
+/* On a light ground the lockup needs the ink-coloured divider */
+.cobrand-on-paper .cobrand-rule { background: rgba(22,41,77,0.28); }
+.cobrand-on-paper .cobrand-x { color: var(--print-ink); }
+
+.brochure-grid { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .brochure-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-10) var(--space-6);
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .panel { min-height: 640px; padding: var(--space-12) var(--space-8); }
+}
+.panel > * { position: relative; z-index: 1; }
+.panel-title {
+  font-family: var(--font-display);
+  font-size: var(--type-display-xl);
+  color: var(--color-text-primary);
+  line-height: 1.0;
+}
+.panel-title-lg { font-size: var(--type-display-lg); }
+.panel-title-md { font-size: var(--type-display-md); }
+.panel-body {
+  font-size: var(--type-body-lg);
+  color: var(--color-text-primary);
+}
+.panel-body-secondary { color: var(--color-text-secondary); }
+
+/* Scroll-in animation */
+.panel, .reveal { transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+.js-reveal .panel,
+.js-reveal .reveal { opacity: 0; transform: translateY(20px); }
+.js-reveal .panel.is-visible,
+.js-reveal .reveal.is-visible { opacity: 1; transform: translateY(0); }
+.js-reveal .panel.is-visible > * { animation: panel-child-in 0.4s ease-out both; }
+.js-reveal .panel.is-visible > *:nth-child(1) { animation-delay: 0ms; }
+.js-reveal .panel.is-visible > *:nth-child(2) { animation-delay: 80ms; }
+.js-reveal .panel.is-visible > *:nth-child(3) { animation-delay: 160ms; }
+.js-reveal .panel.is-visible > *:nth-child(4) { animation-delay: 240ms; }
+.js-reveal .panel.is-visible > *:nth-child(5) { animation-delay: 320ms; }
+.js-reveal .panel.is-visible > *:nth-child(6) { animation-delay: 400ms; }
+.js-reveal .panel.is-visible > *:nth-child(n+7) { animation-delay: 480ms; }
+/* Decorative layers must not animate in with the content flow */
+.js-reveal .panel.is-visible > .deco-dots,
+.js-reveal .panel.is-visible > .deco-skyline,
+.js-reveal .panel.is-visible > .deco-sparkles,
+.js-reveal .panel.is-visible > .deco-corner { animation: none; }
+@keyframes panel-child-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   PATH A — exact reproduction of the printed front side.
+   Light blue panels, white display headings, navy body copy.
+   ============================================================ */
+
+/* ---------- Panel A1 — About Us ---------- */
+.panel-a1 {
+  background: linear-gradient(152deg,
+    var(--print-a1-sky-1) 0%,
+    var(--print-a1-sky-2) 45%,
+    var(--print-a1-sky-3) 100%);
+  color: var(--print-ink);
+  padding: var(--space-6) var(--space-5);
+  justify-content: center;
+}
+.about-card {
+  background: var(--print-paper);
+  border: 2px solid var(--print-ink);
+  border-radius: 26px;
+  padding: var(--space-8) var(--space-6);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+/* faint skyline + swoosh watermarks inside the card */
+.about-card .deco-skyline {
+  position: absolute; left: 0; right: 0; top: 8%;
+  width: 100%; height: 58%;
+  z-index: 0; opacity: 0.13; color: var(--print-ink-accent);
+}
+.about-card .deco-swoosh {
+  position: absolute; left: -18%; bottom: -12%;
+  width: 136%; z-index: 0; opacity: 0.5; color: #7FB6D8;
+}
+.about-card .deco-dots { position: absolute; top: 16px; right: 16px; z-index: 0; color: var(--print-ink-accent); opacity: 0.22; }
+.about-card > *:not(.deco-skyline):not(.deco-swoosh):not(.deco-dots) { position: relative; z-index: 1; }
+
+.ieee-lockup-img { width: min(78%, 260px); height: auto; }
+.a1-tagline {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--print-ink);
+  max-width: none;
+}
+.a1-rule {
+  width: 68%;
+  height: 1px;
+  background: rgba(22,41,77,0.28);
+  position: relative;
+  border: 0;
+}
+.a1-rule::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--print-ink-accent);
+  transform: translate(-50%, -50%);
+}
+.about-badge {
+  display: inline-block;
+  background: var(--print-ink);
+  color: var(--color-white);
+  border: 2px solid #4B77C4;
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-8);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+}
+.panel-a1 p {
+  color: var(--print-ink);
+  font-size: var(--type-body-md);
+  line-height: 1.5;
+  max-width: 40ch;
+  margin: 0 auto;
+}
+.panel-a1 .text-accent { color: var(--print-ink-accent); font-weight: 700; }
+.icon-block {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: left;
+}
+.icon-block .icon-ring {
+  width: 54px; height: 54px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--print-ink);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.icon-block .icon-ring svg { width: 30px; height: 30px; color: var(--print-ink); }
+.icon-block .icon-divider { width: 1px; align-self: stretch; background: rgba(22,41,77,0.25); }
+.icon-block p { text-align: left; font-size: var(--type-body-sm); margin: 0; }
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--color-white);
+  border-radius: 14px;
+  padding: var(--space-3) var(--space-1);
+  width: 100%;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 var(--space-1);
+  border-left: 1px solid rgba(22,41,77,0.18);
+}
+.stat-item:first-child { border-left: 0; }
+.stat-item svg { width: 24px; height: 24px; color: var(--print-ink); }
+.stat-item-number {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  line-height: 1.05;
+  color: var(--print-ink-accent);
+  letter-spacing: 0.01em;
+}
+.stat-item-label {
+  font-weight: 600;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--print-ink);
+  line-height: 1.2;
+}
+
+/* ---------- Panel A2 — Why Join IEEE? ---------- */
+.panel-a2 {
+  background: linear-gradient(165deg,
+    var(--print-a2-sky-1) 0%,
+    var(--print-a2-sky-2) 55%,
+    var(--print-a2-sky-3) 100%);
+  gap: var(--space-4);
+}
+.panel-a2 .print-title { font-size: clamp(2.3rem, 5.2vw, 3.5rem); }
+.panel-a2 .panel-body,
+.panel-a2 .lead-bold,
+.panel-a2 .disciplines,
+.panel-a2 .closing-line {
+  color: var(--print-ink);
+  font-weight: 700;
+  font-size: var(--type-body-lg);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+.benefit-card {
+  background: var(--print-a2-card);
+  border: 0;
+  border-radius: 6px 20px 20px 20px;
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-4);
+}
+.benefit-card-heading {
+  font-weight: 700;
+  font-size: var(--type-body-lg);
+  color: var(--print-ink);
+  margin-bottom: var(--space-2);
+}
+.benefit-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  padding-block: 2px;
+  color: var(--print-ink);
+  font-weight: 700;
+  font-size: var(--type-body-lg);
+  line-height: 1.4;
+}
+.benefit-list li::before {
+  content: "\2022";
+  position: absolute;
+  left: 4px;
+  color: var(--print-ink);
+}
+.who-can-join { margin-top: var(--space-6); }
+
+/* ---------- Panel A3 — Vision & Mission ---------- */
+.panel-a3 {
+  background: linear-gradient(168deg,
+    var(--print-a3-sky-1) 0%,
+    var(--print-a3-sky-2) 52%,
+    var(--print-a3-sky-3) 100%);
+  gap: var(--space-4);
+}
+.panel-a3 .print-title { font-size: clamp(2.4rem, 5.6vw, 3.7rem); }
+.panel-a3 .panel-body {
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: var(--type-body-lg);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+.a3-heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); }
+.a3-icon { width: clamp(74px, 15vw, 118px); height: auto; color: var(--color-white); flex-shrink: 0; }
+.panel-cta {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  color: var(--color-white);
+  line-height: 1.5;
+  max-width: none;
+}
+.panel-cta span { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+
+/* ============================================================
+   PATH A — exact reproduction of the printed back side.
+   Colours, structure and hierarchy follow the brochure artwork
+   rather than the dark-only site palette.
+   ============================================================ */
+
+/* ---------- Shared: small-caps display headings ---------- */
+.print-title {
+  font-family: var(--font-display);
+  color: var(--color-white);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  font-size: clamp(2.6rem, 6.5vw, 3.9rem);
+  max-width: none;
+}
+.print-title .cap { font-size: 1.24em; line-height: 0.8; }
+
+/* ---------- Panel B1 — Membership Benefits ---------- */
+.panel-b1 {
+  background:
+    linear-gradient(118deg,
+      var(--print-b1-sky-1) 0%,
+      var(--print-b1-sky-2) 52%,
+      var(--print-b1-sky-3) 100%);
+  gap: var(--space-6);
+  padding-top: var(--space-16);
+}
+/* descending circuit traces, upper-left */
+.panel-b1 .deco-circuit {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 128px;
+  z-index: 0;
+  color: var(--print-navy-frame);
+  opacity: 0.28;
+  pointer-events: none;
+}
+.benefit-frame {
+  background: var(--print-navy-frame);
+  border-radius: 26px;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.benefit-pill {
+  background: var(--print-pill);
+  border: 2px solid var(--print-navy-frame);
+  border-radius: 14px;
+  padding: var(--space-4) var(--space-5);
+  text-align: center;
+  color: var(--print-pill-ink);
+  font-size: var(--type-body-md);
+  line-height: 1.45;
+  max-width: none;
+}
+.benefit-pill strong { font-weight: 700; color: var(--print-pill-ink); }
+
+/* ---------- Panel B2 — What We Have Organized ---------- */
+.panel-b2 {
+  background: linear-gradient(150deg, var(--print-b2-sky-1) 0%, var(--print-b2-sky-2) 100%);
+  gap: var(--space-5);
+}
+.panel-b2 .print-title {
+  margin-bottom: var(--space-1);
+  font-size: clamp(2.1rem, 4.4vw, 3.3rem);
+  white-space: nowrap;
+}
+.b2-heading { display: flex; align-items: flex-end; justify-content: flex-start; gap: var(--space-4); flex-wrap: wrap; }
+.b2-heading-text { display: flex; flex-direction: column; }
+.b2-year {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.b2-globe { width: clamp(52px, 9vw, 78px); height: auto; color: var(--color-white); flex-shrink: 0; margin-bottom: 0.42em; }
+.event-grid { display: flex; flex-direction: column; gap: var(--space-5); }
+.event-card {
+  background: var(--print-b2-card);
+  border: 0;
+  border-radius: 18px;
+  padding: var(--space-5) var(--space-6);
+}
+.event-card-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--type-body-lg);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+.event-card ul { list-style: none; padding-left: var(--space-4); }
+.event-card li {
+  font-size: var(--type-body-lg);
+  color: var(--color-white);
+  padding: 1px 0 1px var(--space-5);
+  position: relative;
+  line-height: 1.5;
+}
+.event-card li::before {
+  content: "\2022";
+  color: var(--color-white);
+  position: absolute;
+  left: 0;
+  font-size: 1.1em;
+}
+
+/* ---------- Panel B3 — Chapter identity & contact ---------- */
+.panel-b3 {
+  background: var(--print-b3-navy);
+  gap: var(--space-6);
+  padding-inline: var(--space-5);
+}
+.panel-b3::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    radial-gradient(var(--print-gold) 1px, transparent 1.2px),
+    radial-gradient(var(--print-gold) 1px, transparent 1.2px);
+  background-size: 9px 9px, 9px 9px;
+  background-position: 6% 46%, 94% 62%;
+  background-repeat: repeat, repeat;
+  -webkit-mask-image:
+    radial-gradient(circle at 4% 46%, #000 0 46px, transparent 47px),
+    radial-gradient(circle at 96% 62%, #000 0 46px, transparent 47px);
+  mask-image:
+    radial-gradient(circle at 4% 46%, #000 0 46px, transparent 47px),
+    radial-gradient(circle at 96% 62%, #000 0 46px, transparent 47px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+/* white emblem card, with the print's swept bottom-right corner */
+.chapter-card {
+  background: var(--print-card-paper);
+  border: 0;
+  border-radius: 18px 18px 74px 18px;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+}
+.chapter-emblem { width: 100%; max-width: 320px; height: auto; }
+.chapter-ieee {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(3.2rem, 9vw, 4.6rem);
+  line-height: 0.9;
+  color: var(--print-emblem-navy);
+  letter-spacing: 0.02em;
+  margin-top: var(--space-1);
+}
+.chapter-rule-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: var(--space-3);
+}
+.chapter-rule { flex: 1; height: 2px; background: var(--print-gold); }
+.chapter-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 2.4vw, 1.2rem);
+  color: var(--print-gold-deep);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.chapter-tagline {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--type-body-sm);
+  color: var(--print-emblem-navy);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: var(--space-3);
+}
+
+/* ── 12. Contact list (Path A) ──────────────────────────── */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+.contact-item { display: flex; align-items: center; gap: var(--space-3); }
+/* gold ring, white glyph — as printed */
+.contact-badge {
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  border: 2px solid var(--print-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-badge svg { width: 20px; height: 20px; color: var(--color-white); }
+.contact-divider { width: 2px; align-self: stretch; background: var(--print-gold); flex-shrink: 0; }
+.contact-text {
+  font-size: var(--type-body-md);
+  color: var(--color-white);
+  line-height: 1.35;
+  max-width: none;
+}
+.contact-text a { color: var(--color-white); text-decoration: underline; text-underline-offset: 3px; }
+.contact-text a:hover { color: var(--print-gold); }
+
+/* Foot of B3: skyline, IEEE mark, gold corner chevrons */
+.panel-b3 .deco-skyline { color: #2E4E82; opacity: 0.75; height: 92px; }
+.bottom-strip {
+  margin-top: auto;
+  padding-top: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+.bottom-strip .ieee-lockup { display: flex; align-items: center; gap: var(--space-2); }
+.bottom-strip .ieee-lockup svg { width: 26px; height: 26px; color: var(--color-white); }
+.bottom-strip .ieee-wordmark {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+}
+.bottom-strip .ieee-tagline {
+  font-style: italic;
+  font-size: var(--type-body-xs);
+  color: var(--color-white);
+  line-height: 1.25;
+}
+.deco-corner {
+  position: absolute;
+  bottom: 0;
+  width: 78px;
+  height: 58px;
+  z-index: 1;
+  pointer-events: none;
+}
+.deco-corner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-bottom: 4px solid var(--print-gold);
+}
+.deco-corner-left  { left: 0; }
+.deco-corner-left::after  { border-left: 4px solid var(--print-gold); transform: skewX(-24deg); transform-origin: bottom left; }
+.deco-corner-right { right: 0; }
+.deco-corner-right::after { border-right: 4px solid var(--print-gold); transform: skewX(24deg); transform-origin: bottom right; }
+
+/* Brochure CTA */
+.brochure-cta {
+  background: var(--color-navy-800);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  padding: var(--space-16) var(--space-6);
+}
+.brochure-cta > * { margin-inline: auto; }
+.brochure-cta .cta-eyebrow {
+  font-size: var(--type-body-sm);
+  color: var(--color-text-muted);
+}
+.brochure-cta h2 {
+  font-size: var(--type-display-md);
+  color: var(--color-text-primary);
+  margin: var(--space-2) 0 var(--space-3);
+}
+.brochure-cta .cta-body {
+  font-size: var(--type-body-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+/* ── 13. Registration page ──────────────────────────────── */
+.register-main { padding-bottom: var(--space-16); }
+.register-header { text-align: center; padding: var(--space-12) var(--space-6) var(--space-8); }
+.register-header > * { margin-inline: auto; }
+.register-header .ieee-mark { width: 32px; height: auto; color: var(--color-cyan-400); margin-bottom: var(--space-4); }
+.register-header h1 {
+  font-size: var(--type-display-lg);
+  color: var(--color-text-primary);
+}
+.register-header .register-meta {
+  font-size: var(--type-body-md);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+}
+.register-header .register-sub {
+  font-size: var(--type-body-md);
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+  max-width: 42ch;
+}
+.form-wrap { padding: 0 var(--space-4); }
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-8);
+  max-width: 440px;
+  margin: 0 auto;
+}
+.form-card[hidden] { display: none; }
+
+/* ── 14. Success state ──────────────────────────────────── */
+.success-state {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  max-width: 480px;
+  margin: 0 auto;
+  animation: fade-in 0.3s ease both;
+}
+.success-state > * { margin-inline: auto; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.success-icon {
+  width: 64px; height: 64px;
+  background: transparent;
+  border: 1px solid var(--color-cyan-400);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-cyan-400);
+  margin: 0 auto var(--space-6);
+}
+.success-state h2 {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md);
+  color: var(--color-text-primary);
+}
+.success-state p { color: var(--color-text-secondary); margin-top: var(--space-3); }
+.success-meta {
+  font-size: var(--type-body-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+}
+.success-meta strong { color: var(--color-text-primary); }
+.success-state .btn-secondary { margin-top: var(--space-8); }
+
+/* ── 15. Error banner ───────────────────────────────────── */
+.error-banner {
+  background: rgba(239,68,68,0.10);
+  border: 1px solid rgba(239,68,68,0.35);
+  border-radius: var(--radius-sm);
+  color: var(--color-error);
+  font-size: var(--type-body-sm);
+  padding: var(--space-3) var(--space-4);
+  max-width: none;
+}
+
+/* ── 16. Admin nav ──────────────────────────────────────── */
+.admin-nav {
+  background: rgba(10,22,40,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--space-6);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.admin-nav-left { display: flex; align-items: center; gap: var(--space-3); }
+.admin-nav-left svg { width: 24px; height: 24px; color: var(--color-cyan-400); }
+.admin-nav-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--type-body-lg);
+  color: var(--color-text-primary);
+}
+.admin-label {
+  background: var(--color-cyan-muted);
+  color: var(--color-cyan-400);
+  border: 1px solid var(--color-cyan-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--type-body-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  margin-left: var(--space-2);
+  vertical-align: middle;
+}
+.admin-layout {
+  min-height: 100vh;
+  background: var(--color-navy-900);
+  display: flex;
+  flex-direction: column;
+}
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.stats-section { display: flex; flex-direction: column; gap: var(--space-4); }
+.registrations-section { display: flex; flex-direction: column; gap: var(--space-5); }
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--type-display-md);
+  color: var(--color-text-primary);
+}
+.section-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* ── 17. Admin login ────────────────────────────────────── */
+.admin-login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy-900);
+  padding: var(--space-6);
+}
+.login-card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10);
+  width: 100%;
+  max-width: 360px;
+}
+.login-card form { display: flex; flex-direction: column; gap: var(--space-5); }
+.login-brand { text-align: center; }
+.login-brand svg { width: 40px; height: auto; color: var(--color-text-primary); margin: 0 auto var(--space-4); }
+.login-brand h1 {
+  font-size: var(--type-display-md);
+  color: var(--color-text-primary);
+}
+.login-brand .login-sub {
+  font-weight: 500;
+  font-size: var(--type-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: var(--space-1);
+}
+.login-divider {
+  height: 1px;
+  background: var(--color-border);
+  border: 0;
+  margin: var(--space-6) 0;
+}
+
+/* Panel B3 print details: skyline foot + gold corner accents */
+.panel-b3 .deco-skyline { color: var(--color-cyan-400); opacity: 0.15; }
+.deco-corner {
+  position: absolute;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  z-index: 0;
+  border-bottom: 3px solid var(--color-gold-400);
+  opacity: 0.85;
+  pointer-events: none;
+}
+.deco-corner-left  { left: 0;  border-left: 3px solid var(--color-gold-400);  border-bottom-left-radius: 4px; }
+.deco-corner-right { right: 0; border-right: 3px solid var(--color-gold-400); border-bottom-right-radius: 4px; }
+.chapter-card .chapter-mark { width: 96px; height: 96px; }
+
+/* Co-brand lockup inside the admin login card and nav */
+.cobrand-login {
+  justify-content: center;
+  margin: 0 auto var(--space-5);
+}
+.cobrand-login .cobrand-ieee { height: 40px; }
+.cobrand-login .cobrand-bits { height: 42px; }
+.cobrand-login .cobrand-rule { height: 36px; }
+.cobrand-nav .cobrand-ieee { height: 24px; }
+.cobrand-nav .cobrand-bits { height: 26px; }
+.cobrand-nav .cobrand-rule { height: 22px; }
+.admin-nav-left { gap: var(--space-4); }
+@media (max-width: 560px) {
+  .cobrand-nav .cobrand-bits { display: none; }
+  .cobrand-nav .cobrand-rule, .cobrand-nav .cobrand-x { display: none; }
+}

@@ -1,0 +1,15 @@
+# Internal specification documents — not part of the deployed site
+ADMIN.md
+BACKEND.md
+BROCHURE_CONTENT.md
+BUILD.md
+CLAUDE.md
+DESIGN_SYSTEM.md
+FRONTEND.md
+SITEMAP.md
+
+# The admin dashboard is deployed separately, as its own private site
+admin-site/
+
+# Local secrets / working files
+.supabase-db-password.txt

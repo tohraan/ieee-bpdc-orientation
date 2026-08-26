@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060E1E">
+  <title>IEEE BPDC Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="assets/brand/ieee-icon.png">
+  <link rel="apple-touch-icon" href="assets/brand/ieee-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="admin" class="standalone">
+
+  <!-- ============ State 1: Login ============ -->
+  <div class="admin-login-screen" id="login-screen">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="cobrand cobrand-login">
+          <img class="cobrand-ieee" src="assets/brand/ieee-icon.png" alt="IEEE" width="512" height="512">
+          <span class="cobrand-rule" aria-hidden="true"></span>
+          <span class="cobrand-x" aria-hidden="true">&times;</span>
+          <img class="cobrand-bits" src="assets/brand/bits-lockup.png" alt="BITS Pilani Dubai Campus" width="768" height="242">
+        </div>
+        <h1>BPDC Student Chapter</h1>
+        <p class="login-sub">Admin Dashboard</p>
+      </div>
+
+      <hr class="login-divider">
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="admin-password" class="form-label">Password</label>
+          <input type="password" id="admin-password" placeholder="Enter admin password" autocomplete="current-password">
+          <p class="form-error" id="login-error" role="alert" hidden>Incorrect password. Try again.</p>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Access Dashboard &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ State 2: Dashboard ============ -->
+  <div class="admin-layout" id="dashboard" hidden>
+
+    <header class="admin-nav">
+      <div class="admin-nav-left">
+        <div class="cobrand cobrand-nav">
+          <img class="cobrand-ieee" src="assets/brand/ieee-icon.png" alt="IEEE" width="512" height="512">
+          <span class="cobrand-rule" aria-hidden="true"></span>
+          <span class="cobrand-x" aria-hidden="true">&times;</span>
+          <img class="cobrand-bits" src="assets/brand/bits-lockup.png" alt="BITS Pilani Dubai Campus" width="768" height="242">
+        </div>
+        <span class="admin-nav-title">BPDC <span class="admin-label">Admin</span></span>
+      </div>
+      <div class="admin-nav-right">
+        <button id="logout-btn" class="btn-secondary btn-sm">Logout</button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+
+      <!-- Stats row -->
+      <section class="stats-section" aria-label="Scan and registration statistics">
+        <div class="stats-row">
+          <div class="stat-tile" id="stat-brochure">
+            <div class="stat-number" id="count-brochure">&mdash;</div>
+            <div class="stat-label">Brochure Page Scans</div>
+            <div class="stat-description">QR Code A</div>
+          </div>
+          <div class="stat-tile" id="stat-registration">
+            <div class="stat-number" id="count-registration">&mdash;</div>
+            <div class="stat-label">Registration Page Scans</div>
+            <div class="stat-description">QR Code B</div>
+          </div>
+          <div class="stat-tile" id="stat-total">
+            <div class="stat-number" id="count-total">&mdash;</div>
+            <div class="stat-label">Total Registrations</div>
+            <div class="stat-description">Completed forms</div>
+          </div>
+        </div>
+        <div class="error-banner" hidden id="stats-error" role="alert">
+          Failed to load stats. Check your Supabase connection.
+        </div>
+      </section>
+
+      <!-- Registrations -->
+      <section class="registrations-section" aria-label="Registrations">
+        <div class="section-header">
+          <h2 class="section-title">Registrations</h2>
+          <div class="section-actions">
+            <button id="refresh-btn" class="btn-secondary btn-sm">&#8635; Refresh</button>
+            <button id="export-btn" class="btn-secondary btn-sm">&darr; Export CSV</button>
+          </div>
+        </div>
+        <div class="table-container" id="registrations-table-container">
+          <!-- Table injected by admin.js -->
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+/* ============================================================
+   base.css — IEEE BPDC Site
+   Reset, body, base typography, navigation.
+   Every color references a token from tokens.css.
+   ============================================================ */
+
+/* ── 1. Reduced motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 2. Reset ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img, svg { display: block; max-width: 100%; }
+button { cursor: pointer; font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+input, button, select, textarea { font-family: inherit; }
+[hidden] { display: none !important; }
+
+/* ── 3. Body ────────────────────────────────────────────── */
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--color-navy-900);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--type-body-lg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 60px; /* bottom nav height on mobile */
+  overflow-x: hidden;
+}
+body[data-page="brochure"] {
+  background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(0,174,239,0.06) 0%, transparent 70%);
+}
+
+/* ── 4. Base typography ─────────────────────────────────── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-wrap: balance;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+}
+h4, h5, h6 { font-family: var(--font-body); font-weight: 600; text-wrap: balance; }
+p { max-width: 65ch; }
+ul, ol { list-style: none; }
+strong, b { font-weight: 700; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-cyan-400);
+  outline-offset: 2px;
+}
+::selection { background: var(--color-cyan-400); color: var(--color-text-inverse); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── 5. Desktop top nav ─────────────────────────────────── */
+.nav-top {
+  display: none; /* mobile uses the bottom nav */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,22,40,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: 600;
+  font-size: var(--type-body-lg);
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+.nav-logo svg { width: 28px; height: 28px; color: var(--color-cyan-400); }
+.nav-links { display: flex; align-items: center; gap: var(--space-2); }
+.nav-link {
+  font-size: var(--type-label-lg);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: color 0.18s ease, background 0.18s ease;
+}
+.nav-link:hover { color: var(--color-text-primary); background: var(--color-surface-card); }
+.nav-link.active { color: var(--color-cyan-400); }
+.nav-link-primary {
+  background: var(--color-cyan-400);
+  color: var(--color-text-inverse);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: var(--shadow-button);
+}
+.nav-link-primary:hover { background: var(--color-cyan-300); color: var(--color-text-inverse); }
+.nav-link-primary.active { color: var(--color-text-inverse); }
+.nav-link-muted { color: var(--color-text-muted); }
+
+/* ── 6. Mobile bottom nav ───────────────────────────────── */
+.nav-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--color-navy-800);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  height: 60px;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--color-text-muted);
+  transition: color 0.18s ease;
+}
+.nav-icon { width: 24px; height: 24px; color: currentColor; }
+.nav-label {
+  font-size: var(--type-body-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.nav-item:hover { color: var(--color-text-secondary); }
+.nav-item.active { color: var(--color-cyan-400); }
+.nav-item.active .nav-icon { color: var(--color-cyan-400); }
+
+/* ── 7. Responsive nav swap ─────────────────────────────── */
+@media (min-width: 768px) {
+  /* .nav-top is position:sticky, so it occupies flow space itself —
+     no body padding-top is needed to clear it. */
+  body { padding-bottom: 0; }
+  .nav-top { display: flex; }
+  .nav-bottom { display: none; }
+}

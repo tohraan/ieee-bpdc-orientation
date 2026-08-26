@@ -1,0 +1,14 @@
+# Vercel link metadata
+.vercel/
+admin-site/.vercel/
+
+# Supabase local state
+supabase/.temp/
+
+# Never commit the database password
+.supabase-db-password.txt
+
+# Tooling noise
+node_modules/
+package-lock.json
+.DS_Store

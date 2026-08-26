@@ -1,0 +1,144 @@
+/* ============================================================
+   tokens.css — IEEE BPDC Site
+   Single source of all design tokens. ONLY a :root block.
+   Mirrors DESIGN_SYSTEM.md. Add new tokens here first.
+   ============================================================ */
+
+:root {
+  /* === Primary Palette === */
+  --color-navy-900: #060E1E;        /* Deepest background — page body */
+  --color-navy-800: #0A1628;        /* Section backgrounds, card base */
+  --color-navy-700: #0D1F3C;        /* Slightly lighter panels */
+  --color-navy-600: #1A3A6E;        /* Mid-blue, secondary cards, borders */
+  --color-navy-500: #1E4080;        /* Interactive hover states */
+
+  /* === Accent — Cyan (IEEE brand) === */
+  --color-cyan-400: #00AEEF;        /* Primary accent: links, highlights, bullets, active states */
+  --color-cyan-300: #33C0F4;        /* Lighter cyan for hover on cyan elements */
+  --color-cyan-600: #007BAB;        /* Darker cyan for pressed states */
+  --color-cyan-muted: rgba(0,174,239,0.12);   /* Low-opacity cyan for highlight boxes */
+  --color-cyan-border: rgba(0,174,239,0.30);  /* Cyan border without full saturation */
+
+  /* === Accent — Gold (BPDC chapter) === */
+  --color-gold-400: #C9A84C;        /* Used sparingly: chapter badge, premium labels */
+  --color-gold-300: #DEC070;        /* Hover on gold elements */
+  --color-gold-muted: rgba(201,168,76,0.15);  /* Gold highlight wash */
+
+  /* === Text === */
+  --color-text-primary: #F0F6FF;    /* Headings, primary body copy */
+  --color-text-secondary: #A8BDD4;  /* Captions, secondary body, metadata */
+  --color-text-muted: #5A7A9A;      /* Placeholder text, disabled states */
+  --color-text-inverse: #060E1E;    /* Text on cyan or gold backgrounds */
+
+  /* === Surface / UI === */
+  --color-surface-card: rgba(255,255,255,0.04);     /* Glass card base */
+  --color-surface-card-hover: rgba(255,255,255,0.07);
+  --color-surface-input: rgba(255,255,255,0.06);    /* Form input backgrounds */
+  --color-surface-input-focus: rgba(0,174,239,0.08);
+  --color-border: rgba(255,255,255,0.10);           /* Default dividers and borders */
+  --color-border-accent: var(--color-cyan-border);  /* Focused input borders */
+
+  /* === Brochure panel palette (print recreation) === */
+  --color-white: #FFFFFF;                       /* Panel A1/B1 print white — not for large text blocks */
+  --color-paper-100: #FFFFFF;                   /* Panel A1 gradient stop 1 */
+  --color-paper-200: #E8F4FD;                   /* Panel A1 gradient stop 2 */
+  --color-paper-300: #C5E0F5;                   /* Panel A1 gradient stop 3 */
+  --color-paper-ink: var(--color-navy-800);     /* Text on the light panel */
+  --color-paper-ink-accent: var(--color-navy-600); /* Highlighted words on the light panel */
+  --color-paper-rule: rgba(10,22,40,0.15);      /* Divider on the light panel */
+  --color-benefits-start: #1A8FB8;              /* Panel B1 gradient origin */
+  --color-pill-surface: rgba(255,255,255,0.10); /* Panel B1 benefit pill */
+  --color-pill-border: rgba(255,255,255,0.18);
+  --color-pill-text: rgba(255,255,255,0.80);
+  --color-panel-glass: rgba(255,255,255,0.07);  /* Panel A2 highlight card */
+  --color-panel-glass-soft: rgba(255,255,255,0.05); /* Panel B2 event card */
+
+  /* === Path A: exact print reproduction, back side === */
+  --print-b1-sky-1: #AFDFEC;      /* B1 gradient, top-left */
+  --print-b1-sky-2: #8CC5DE;
+  --print-b1-sky-3: #7EB3D3;      /* B1 gradient, right edge */
+  --print-navy-frame: #16324F;    /* B1 dark container + pill outline */
+  --print-pill: #8FCFE3;          /* B1 benefit pill fill */
+  --print-pill-ink: #10283F;      /* B1 pill text */
+  --print-b2-sky-1: #6E9FC4;      /* B2 gradient */
+  --print-b2-sky-2: #5F92BC;
+  --print-b2-card: rgba(48,86,122,0.88);  /* B2 event card */
+  --print-b3-navy: #16305A;       /* B3 panel ground */
+  --print-b3-navy-deep: #0F2344;
+  --print-card-paper: #FBFCFD;    /* B3 emblem card */
+  --print-emblem-navy: #16294D;
+  --print-gold: #C9A84C;
+  --print-gold-deep: #A8862F;
+
+  /* === Path A: exact print reproduction, front side === */
+  --print-a1-sky-1: #C6E6F1;      /* A1 panel ground */
+  --print-a1-sky-2: #9FCFE4;
+  --print-a1-sky-3: #7FB6D8;
+  --print-paper: #F7FBFD;         /* A1 white card */
+  --print-ink: #16294D;           /* navy body text across the front side */
+  --print-ink-accent: #1F4E9C;    /* highlighted figures: 1884, 460000, 140+ years */
+  --print-a2-sky-1: #CFE7F2;      /* A2 panel ground */
+  --print-a2-sky-2: #A9CFE6;
+  --print-a2-sky-3: #8CBDDC;
+  --print-a2-card: rgba(255,255,255,0.52);
+  --print-a3-sky-1: #7AA7CE;      /* A3 panel ground, deepest of the three */
+  --print-a3-sky-2: #5183B3;
+  --print-a3-sky-3: #3F6C9C;
+
+  /* === Semantic (admin dashboard) === */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* === Type Scale — Display (Bebas Neue) === */
+  --type-display-xl: clamp(3.5rem, 8vw, 6rem);
+  --type-display-lg: clamp(2.5rem, 5vw, 4rem);
+  --type-display-md: clamp(1.8rem, 3.5vw, 2.5rem);
+
+  /* === Type Scale — Body (Inter) === */
+  --type-body-xl: 1.125rem;
+  --type-body-lg: 1rem;
+  --type-body-md: 0.9375rem;
+  --type-body-sm: 0.8125rem;
+  --type-body-xs: 0.6875rem;
+
+  /* === Type Scale — Labels === */
+  --type-label-lg: 0.875rem;
+  --type-label-sm: 0.6875rem;
+
+  /* === Type Scale — Mono (JetBrains Mono) === */
+  --type-mono-lg: 1rem;
+  --type-mono-sm: 0.8125rem;
+
+  /* === Spacing (base-4) === */
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* === Border Radius === */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* === Shadows and Glows === */
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.4);
+  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px var(--color-cyan-border);
+  --glow-cyan: 0 0 24px rgba(0,174,239,0.25);
+  --shadow-button: 0 4px 16px rgba(0,174,239,0.30);
+
+  /* === Font Families === */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060E1E">
+  <title>Join IEEE BPDC</title>
+  <meta name="description" content="Register your interest in joining IEEE BPDC Student Chapter. Open to all disciplines at BITS Pilani Dubai.">
+
+  <link rel="icon" type="image/png" href="assets/brand/ieee-icon.png">
+  <link rel="apple-touch-icon" href="assets/brand/ieee-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="registration">
+
+  <!-- ============ Desktop top nav ============ -->
+  <header class="nav-top" aria-label="Site navigation">
+    <a href="brochure.html" class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 1.5 22.5 12 12 22.5 1.5 12z"/><circle cx="12" cy="12" r="4.6"/>
+        <path d="M7.4 12h9.2M12 7.4c1.5 1.3 2.3 2.9 2.3 4.6S13.5 15.3 12 16.6c-1.5-1.3-2.3-2.9-2.3-4.6S10.5 8.7 12 7.4z"/>
+      </svg>
+      <span>IEEE BPDC</span>
+    </a>
+    <nav class="nav-links">
+      <a href="brochure.html" class="nav-link">Brochure</a>
+      <a href="register.html" class="nav-link nav-link-primary">Register</a>
+    </nav>
+  </header>
+
+  <main class="register-main">
+
+    <!-- ============ Header ============ -->
+    <div class="register-header">
+      <svg class="ieee-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="IEEE logo">
+        <path d="M12 1.5 22.5 12 12 22.5 1.5 12z"/><circle cx="12" cy="12" r="4.6"/>
+        <path d="M7.4 12h9.2M12 7.4c1.5 1.3 2.3 2.9 2.3 4.6S13.5 15.3 12 16.6c-1.5-1.3-2.3-2.9-2.3-4.6S10.5 8.7 12 7.4z"/>
+      </svg>
+      <h1>Join IEEE BPDC</h1>
+      <p class="register-meta">Orientation 2025&ndash;26</p>
+      <p class="register-sub">Fill in your details below and we'll reach out to complete your IEEE membership.</p>
+    </div>
+
+    <!-- ============ Form ============ -->
+    <div class="form-wrap">
+      <form id="registration-form" class="form-card" novalidate>
+
+        <div class="form-group">
+          <label for="full-name" class="form-label">Full Name <span class="required-star">*</span></label>
+          <input type="text" id="full-name" name="full_name" placeholder="e.g. Arjun Sharma" autocomplete="name" required>
+          <p class="form-error" id="full-name-error" role="alert" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="bits-id" class="form-label">BITS ID <span class="required-star">*</span></label>
+          <input type="text" id="bits-id" name="bits_id" placeholder="2023A7PS0001U" autocomplete="off" spellcheck="false" required>
+          <p class="form-hint">e.g. 2023A7PS0001U</p>
+          <p class="form-error" id="bits-id-error" role="alert" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email ID <span class="required-star">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@dubai.bits-pilani.ac.in" autocomplete="email" required>
+          <p class="form-warning" id="email-warning" hidden></p>
+          <p class="form-error" id="email-error" role="alert" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="phone-call" class="form-label">Phone (for calls) <span class="required-star">*</span></label>
+          <input type="tel" id="phone-call" name="phone_call" placeholder="+971 XX XXX XXXX" autocomplete="tel" required>
+          <p class="form-error" id="phone-call-error" role="alert" hidden></p>
+        </div>
+
+        <div class="form-group">
+          <label for="phone-whatsapp" class="form-label">WhatsApp Number</label>
+          <input type="tel" id="phone-whatsapp" name="phone_whatsapp" placeholder="+971 XX XXX XXXX" autocomplete="tel">
+          <p class="form-hint">Leave blank if same as calling number</p>
+          <p class="form-error" id="phone-whatsapp-error" role="alert" hidden></p>
+        </div>
+
+        <p class="error-banner" id="form-error-banner" role="alert" hidden></p>
+
+        <button type="submit" class="btn-primary btn-full" id="submit-btn">Register Now &rarr;</button>
+      </form>
+
+      <!-- ============ Success state ============ -->
+      <div class="success-state" id="success-state" hidden>
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h2>You're registered!</h2>
+        <p>We'll reach out on your calling number to complete the IEEE membership process.</p>
+        <p class="success-meta">Registered as: <strong id="success-name"></strong></p>
+        <a href="brochure.html" class="btn-secondary">&larr; Back to Brochure</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============ Mobile bottom nav ============ -->
+  <nav class="nav-bottom" aria-label="Main navigation">
+    <a href="brochure.html" class="nav-item" data-page="brochure">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5.5A1.5 1.5 0 0 0 4 19.5z"/>
+        <path d="M4 19.5A1.5 1.5 0 0 1 5.5 18H20v3H5.5A1.5 1.5 0 0 1 4 19.5z"/>
+      </svg>
+      <span class="nav-label">Brochure</span>
+    </a>
+    <a href="register.html" class="nav-item" data-page="register">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1z"/>
+        <path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/>
+        <path d="M8.5 11.5h7M8.5 15.5h5"/>
+      </svg>
+      <span class="nav-label">Register</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/sheets.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>
