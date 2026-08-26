@@ -81,10 +81,11 @@
       errors.push({ field: 'phone-call-number', message: 'Please enter a valid phone number.' });
     }
 
-    // WhatsApp is optional, but must be valid when the user typed one.
     const waNumber = document.getElementById('phone-whatsapp-number').value.trim();
-    if (waNumber && digitCount(waNumber) < 7) {
-      errors.push({ field: 'phone-whatsapp-number', message: 'Please enter a valid WhatsApp number, or leave it blank.' });
+    if (!waNumber) {
+      errors.push({ field: 'phone-whatsapp-number', message: 'Please enter your WhatsApp number.' });
+    } else if (digitCount(waNumber) < 7) {
+      errors.push({ field: 'phone-whatsapp-number', message: 'Please enter a valid WhatsApp number.' });
     }
 
     return errors;

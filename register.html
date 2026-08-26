@@ -71,7 +71,7 @@
         </div>
 
         <div class="form-group">
-          <label for="phone-call-number" class="form-label">Phone (for calls) <span class="required-star">*</span></label>
+          <label for="phone-call-number" class="form-label">Phone <span class="required-star">*</span></label>
           <div class="phone-input-group">
             <select id="phone-call-code" name="phone_call_code" class="country-code-select" autocomplete="tel-country-code">
               <option value="+971" selected>🇦🇪 +971</option>
@@ -111,7 +111,7 @@
         </div>
 
         <div class="form-group">
-          <label for="phone-whatsapp-number" class="form-label">WhatsApp Number</label>
+          <label for="phone-whatsapp-number" class="form-label">WhatsApp Number <span class="label-note">(this is where we are going to reach out to you)</span> <span class="required-star">*</span></label>
           <div class="phone-input-group">
             <select id="phone-whatsapp-code" name="phone_whatsapp_code" class="country-code-select" autocomplete="tel-country-code">
               <option value="+971" selected>🇦🇪 +971</option>
@@ -145,9 +145,8 @@
               <option value="+39">🇮🇹 +39</option>
               <option value="+34">🇪🇸 +34</option>
             </select>
-            <input type="tel" id="phone-whatsapp-number" name="phone_whatsapp_number" placeholder="XX XXX XXXX" autocomplete="tel-national">
+            <input type="tel" id="phone-whatsapp-number" name="phone_whatsapp_number" placeholder="XX XXX XXXX" autocomplete="tel-national" required>
           </div>
-          <p class="form-hint">Leave blank if same as calling number</p>
           <p class="form-error" id="phone-whatsapp-number-error" role="alert" hidden></p>
         </div>
 
@@ -160,7 +159,7 @@
       <div class="success-state" id="success-state" hidden>
         <div class="success-icon" aria-hidden="true">&#10003;</div>
         <h2>You're registered!</h2>
-        <p>We'll reach out on your calling number to complete the IEEE membership process.</p>
+        <p>We'll reach out on WhatsApp to complete the IEEE membership process.</p>
         <p class="success-meta">Registered as: <strong id="success-name"></strong></p>
         <a href="brochure.html" class="btn-secondary">&larr; Back to Brochure</a>
       </div>
