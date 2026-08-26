@@ -11,7 +11,7 @@ or serve the folder.
 
 | Site | URL | Source |
 |------|-----|--------|
-| Brochure + registration (public) | https://ieee-brown-nine.vercel.app | repo root |
+| Brochure + registration (public) | https://ieee-bpdc.vercel.app | repo root |
 | Admin dashboard (private) | https://ieee-bpdc-admin.vercel.app | `admin-site/` |
 
 The two are **separate Vercel projects on purpose**. The public bundle carries only the
@@ -52,9 +52,16 @@ psql "$SUPABASE_DB_URL" -f supabase/schema.sql
 
 ## Deploying
 
+Both Vercel projects are connected to this repository, so **pushing to `main`
+deploys both**: `ieee-bpdc` builds from the repo root, `ieee-bpdc-admin` builds
+from `admin-site/`. The root `.vercelignore` keeps `admin-site/` and the spec
+documents out of the public deployment.
+
+To deploy by hand instead:
+
 ```sh
-npx vercel deploy --prod            # public site, from the repo root
-cd admin-site && npx vercel deploy --prod   # admin site
+npx vercel deploy --prod                     # public site, from the repo root
+cd admin-site && npx vercel deploy --prod    # admin site
 ```
 
 ## Still to wire
