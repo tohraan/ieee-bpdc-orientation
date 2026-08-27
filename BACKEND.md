@@ -11,7 +11,7 @@ Browser (static site)
     │                └── registrations table
     │
     └──► Google Apps Script Web App (spreadsheet mirror)
-             └── Google Sheet: "IEEE BPDC Registrations 2025-26"
+             └── Google Sheet: "IEEE BPDC Registrations 2026-27"
 ```
 
 The frontend talks directly to both backends over HTTPS from the browser. There is no intermediate server. The Supabase anon key and Apps Script URL are visible in client-side code — this is acceptable for a student chapter orientation site, but **rotate both keys after the event**.
@@ -228,7 +228,7 @@ A Google Sheet acts as a human-readable mirror of the `registrations` table. The
 ### Setup Steps
 
 1. **Create the Google Sheet**
-   - Title: "IEEE BPDC Registrations 2025-26"
+   - Title: "IEEE BPDC Registrations 2026-27"
    - Sheet tab name: "Registrations"
    - Row 1 headers (add manually): `Timestamp | Full Name | BITS ID | Email | Phone (Call) | Phone (WhatsApp)`
 

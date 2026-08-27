@@ -1,7 +1,7 @@
 # IEEE BPDC Orientation Site
 
 Recruitment microsite for the **IEEE BPDC Student Chapter**, BITS Pilani Dubai Campus,
-built for the 2025–26 orientation. Students scan a QR code, read the brochure, and
+built for the 2026–27 orientation. Students scan a QR code, read the brochure, and
 register; the committee reads submissions from a separate admin dashboard.
 
 Vanilla HTML/CSS/JS — no framework, no npm, no build step. Open the files directly

@@ -37,7 +37,7 @@ If on GitHub Pages (no rewrites), the direct `.html` URLs are used. The QR codes
 5. Panel A3 — Our Vision & Mission (right panel, front side)
 6. Divider — "FLIP SIDE" visual separator
 7. Panel B1 — Membership Benefits (left panel, back side)
-8. Panel B2 — What We Organized 2025-26 (center panel, back side)
+8. Panel B2 — What We Organized 2026-27 (center panel, back side)
 9. Panel B3 — Contact & Chapter Identity (right panel, back side)
 10. CTA bar — "Ready to join?" → links to register page
 
@@ -51,7 +51,7 @@ If on GitHub Pages (no rewrites), the direct `.html` URLs are used. The QR codes
 
 **Sections:**
 1. Nav (same as brochure page)
-2. Form hero — brief heading and subtext ("Join IEEE BPDC · Orientation 2025-26")
+2. Form hero — brief heading and subtext ("Join IEEE BPDC · Orientation 2026-27")
 3. The form itself
 4. Submit button
 5. Success state (replaces form after submission)

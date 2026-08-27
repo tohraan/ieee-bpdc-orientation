@@ -202,14 +202,14 @@ Each card: label is **bold** (Inter 700), description is regular weight (Inter 4
 
 ---
 
-### Panel B2 — "What We Have Organized (2025-26)" (Center panel, back)
+### Panel B2 — "What We Have Organized (2026-27)" (Center panel, back)
 
 **Visual character:** Dark navy background. Four distinct category sections, each inside a dark card with a bold label and bullet list. Globe icon next to the main heading.
 
 **Section heading:**
 ```
 WHAT WE HAVE ORGANIZED
-(2025-26)
+(2026-27)
 ```
 (Bebas Neue, with a globe icon to the right of the heading)
 

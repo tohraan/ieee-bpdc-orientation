@@ -117,7 +117,7 @@ Contents:
 - IEEE diamond logo SVG (24px, white)
 - Text: "IEEE BPDC STUDENT CHAPTER" — Inter 600, `--type-body-sm`, `letter-spacing: 0.12em`, uppercase, `--color-text-secondary`
 - Separator dot (·)
-- Text: "Orientation 2025–26" — Inter 400, `--type-body-sm`, `--color-text-muted`
+- Text: "Orientation 2026–27" — Inter 400, `--type-body-sm`, `--color-text-muted`
 
 ---
 
@@ -313,7 +313,7 @@ Between the A panels and B panels on desktop; hidden on mobile (panels just stac
 
 1. **Heading row** — flex, `align-items: center`, `gap: var(--space-3)`
    - "WHAT WE HAVE ORGANIZED" in Bebas Neue, `--type-display-md`
-   - "(2025-26)" in Inter 600, `--type-body-md`, `--color-text-secondary`
+   - "(2026-27)" in Inter 600, `--type-body-md`, `--color-text-secondary`
    - Globe SVG icon (24px, `--color-cyan-400`) to the right of the heading
 
 2. **Four category cards** — 2×2 grid on desktop, stacked on mobile
@@ -445,7 +445,7 @@ On mobile: form fills the screen with `padding: var(--space-4)`. On desktop: for
 
 - IEEE logo (32px) centered
 - "JOIN IEEE BPDC" — Bebas Neue, `--type-display-lg`, `--color-text-primary`
-- "Orientation 2025–26" — Inter 400, `--type-body-md`, `--color-text-secondary`
+- "Orientation 2026–27" — Inter 400, `--type-body-md`, `--color-text-secondary`
 - "Fill in your details below and we'll reach out to complete your IEEE membership." — Inter 400, `--type-body-md`, `--color-text-muted`
 
 ### Section: The Form
